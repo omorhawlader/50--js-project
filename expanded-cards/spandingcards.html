@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>css learning</title>
+  </head>
+  <body>
+
+    <div class="wraper">
+      <div data-id="1" >
+        <img src="./rose-erkul.jpg" alt="" />
+      </div>
+      <div data-id="2" >
+        <img src="./nikhil-kumar.jpg" alt="" />
+      </div>
+
+      <div data-id="3" >
+        <img src="./david-marcu.jpg" alt="" />
+      </div>
+
+      <div data-id="4" >
+        <img src="./aleksandr.jpg" alt="" />
+      </div>
+      <div data-id="4" >
+        <img src="./rose-erkul.jpg" alt="" />
+      </div>
+      <div data-id="5" >
+        <img src="./nikhil-kumar.jpg" alt="" />
+      </div>
+
+      <div data-id="6" >
+        <img src="./david-marcu.jpg" alt="" />
+      </div>
+
+      <div data-id="7" >
+        <img src="./aleksandr.jpg" alt="" />
+      </div>
+    </div>
+    <script>
+
+      let active = null;
+      let sameElCounter = 0;
+      const wraper = document.querySelectorAll(".wraper > div");
+      let slider = document.querySelector("html");
+      function removeAll() {
+        wraper.forEach((div) => {
+          div.classList.remove("expanded-div");
+        });
+      }
+     const clickHandler = (div) => {
+          
+        removeAll()
+        
+        div.classList.add("expanded-div");
+       
+        if(active === div.dataset.id){
+          sameElCounter+=1;
+          if(sameElCounter == 2){
+
+            div.classList.add('expanded-div')
+            sameElCounter = 0;
+          }else{
+
+            div.classList.remove("expanded-div");
+          }
+
+        }
+        active = div.dataset.id
+          
+         
+          div.removeEventListener("click", clickHandler )
+          
+        }
+      // const mousedownHandler = ()=> {}
+      // const mousemoveHandler = ()=> {}
+      // const mouseupHandler = ()=> {}
+      // slider.addEventListener('mousedown',()=> mousedownHandler(),false)
+      //   slider.addEventListener('mousemove',()=> mousemoveHandler(),false)
+      //   slider.addEventListener('mouseup',()=> mouseupHandler(),false)
+
+      wraper.forEach((div) => {
+        div.addEventListener("click", ()=>clickHandler(div) )
+      });
+    
+
+    </script>
+  </body>
+</html>
